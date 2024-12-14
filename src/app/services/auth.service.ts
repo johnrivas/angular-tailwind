@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
-import { Observable, of, tap } from 'rxjs';
+import { computed, inject, Injectable, signal } from '@angular/core';
+import { catchError, Observable, of, switchMap, tap, throwError } from 'rxjs';
 
 import { User } from '../interfaces/user.interface';
 
@@ -10,27 +10,30 @@ import { User } from '../interfaces/user.interface';
 export class AuthService {
 
   private url = 'http://localhost:3000/api/';
-  private user?: User;
+  private user = signal<User|null>(null);
 
   private http = inject(HttpClient);
 
-  get currentUser(): User | undefined {
-    if (!this.user) return undefined;
-    return structuredClone(this.user);
-  }
+  public currentUser = computed(() => this.user());
 
   login(email: string, password: string) : Observable<User>
   {
     return this.http.post<User>(`${this.url}auth/login`, { email, password }).pipe(
-      tap((user) => this.user = user),
-      tap(() => localStorage.setItem('token', this.user!.token))
+      tap((user : User) => this.user.set(user)),
+      tap((user: User) => localStorage.setItem('token', user!.token)),
+      catchError(err => throwError(() => err.error.message))
     );
   }
 
-  checkAuth(): Observable<boolean>
+  checkAuth() : Observable<boolean>
   {
     if (!localStorage.getItem('token')) return of(false);
-    return of(true);
+
+    return this.http.get<User>(`${this.url}auth/verify-token`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).pipe(
+      tap((user: User) => this.user.set(user)),
+      switchMap(() => of(true)),
+      catchError(() => of(false))
+    );
   }
 
 }
