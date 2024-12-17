@@ -1,0 +1,33 @@
+import { ValidRoles } from "../interfaces/valid-roles.interface";
+
+export const mainMenu = [
+  {
+    permission: [ValidRoles.user],
+    label: 'Dashboard',
+  },
+  {
+    permission: [ValidRoles.admin],
+    label: 'Configuration',
+    items: [
+      {
+        permission : [ValidRoles.admin],
+        label: 'Users',
+        icon: 'pi pi-fw pi-plus',
+        items: [
+          {
+            permission : [ValidRoles.admin],
+            label: 'Add',
+          },
+          {
+            permission : [ValidRoles.admin],
+            label: 'Edit',
+          },
+          {
+            permission : [ValidRoles.admin],
+            label: 'Delete',
+          },
+        ],
+      }
+    ],
+  },
+];

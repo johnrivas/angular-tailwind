@@ -1,12 +1,15 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MenuItem } from 'primeng/api';
-import { Menubar } from 'primeng/menubar';
-import { BadgeModule } from 'primeng/badge';
 import { AvatarModule } from 'primeng/avatar';
-import { User } from '../../interfaces/user.interface';
+import { BadgeModule } from 'primeng/badge';
+import { Menubar } from 'primeng/menubar';
+import { MenuItem } from 'primeng/api';
+
 import { AuthService } from '../../services/auth.service';
+import { mainMenu } from '../../config';
+import { printMenu } from '../../utils';
+
 
 
 @Component({
@@ -24,23 +27,7 @@ import { AuthService } from '../../services/auth.service';
 export default class HomePageComponent {
 
   private autService = inject(AuthService);
-
   public user = computed(() => this.autService.currentUser());
+  public items: MenuItem[] = this.user()?printMenu(mainMenu, this.user()!.roles):[];
 
-  items: MenuItem[] = [
-    {
-      label: 'File',
-      items: [
-        {
-          label: 'New',
-        },
-        {
-          label: 'Open',
-        },
-        {
-          label: 'Quit',
-        },
-      ],
-    },
-  ];
 }
