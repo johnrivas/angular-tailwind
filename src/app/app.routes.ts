@@ -8,6 +8,14 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/homePage/homePage.component'),
     canActivate: [AuthGuard],
     canMatch: [AuthGuard],
+    children: [
+      {
+        path: 'users',
+        loadComponent: () => import('./pages/usersPage/usersPage.component'),
+        canActivate: [AuthGuard],
+        canMatch : [AuthGuard],
+      },
+    ],
   },
   {
     path: 'login',

@@ -17,6 +17,7 @@ export const mainMenu = [
           {
             permission : [ValidRoles.admin],
             label: 'Add',
+            route: '/home/users',
           },
           {
             permission : [ValidRoles.admin],

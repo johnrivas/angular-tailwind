@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, effect, inject } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
+
+import { AuthService } from './services/auth.service';
 
 
 @Component({
@@ -10,5 +12,12 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'ssapp-cash-flow';
+  private authService = inject( AuthService );
+  private router = inject( Router );
+
+  public authStatusChangedEffect = effect(() => {
+    if (this.authService.currentUser() === null) {
+      this.router.navigateByUrl('/login');
+    }
+  });
 }

@@ -39,4 +39,10 @@ export class AuthService {
     );
   }
 
+  logout() : void
+  {
+    localStorage.clear();
+    this.user.set(null);
+  }
+
 }
