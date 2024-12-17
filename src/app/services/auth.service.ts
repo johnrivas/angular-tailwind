@@ -32,7 +32,10 @@ export class AuthService {
     return this.http.get<User>(`${this.url}auth/verify-token`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).pipe(
       tap((user: User) => this.user.set(user)),
       switchMap(() => of(true)),
-      catchError(() => of(false))
+      catchError(() => {
+        localStorage.clear();
+        return of(false)
+      })
     );
   }
 
