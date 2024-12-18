@@ -6,7 +6,7 @@
       </ng-template>
       <ng-template #item let-item let-root="root">
           <a pRipple class="flex items-center p-menubar-item-link" [routerLink]="item.route" >
-            <i class="pi" [ngClass]="item.icon"></i>
+            <i class="-mr-1 pi" [ngClass]="item.icon" style="font-size: .8rem"></i>
             <span class="p-menubar-item-text">{{item.label}}</span>
             <i *ngIf="item.items" [ngClass]="['ml-auto pi', root ? 'pi-angle-down' : 'pi-angle-right']"></i>
           </a>
