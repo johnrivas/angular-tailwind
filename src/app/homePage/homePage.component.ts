@@ -8,12 +8,9 @@ import { Menu } from 'primeng/menu';
 import { Menubar } from 'primeng/menubar';
 import { MenuItem } from 'primeng/api';
 
-import { AuthService } from '../../services/auth.service';
-import { mainMenu } from '../../config';
-import { printMenu } from '../../utils';
-
-
-
+import { AuthService } from '../services/auth.service';
+import { mainMenu } from '../config';
+import { printMenu } from '../utils';
 
 @Component({
   selector: 'home-page',
@@ -29,11 +26,11 @@ import { printMenu } from '../../utils';
   ],
   templateUrl: './homePage.component.html',
 })
-export default class HomePageComponent implements OnInit {
+export default class HomePageComponent {
 
   private autService = inject(AuthService);
   public user = computed(() => this.autService.currentUser());
-  public items: MenuItem[] = [];
+  public items: MenuItem[] = this.user()?printMenu(mainMenu, this.user()!.roles):[];
 
   public sub = viewChild<BaseComponent>('submenu');
 
@@ -50,10 +47,6 @@ export default class HomePageComponent implements OnInit {
   subMenu(): void
   {
     this.sub()!.el.nativeElement.classList.toggle('hidden');
-  }
-
-  ngOnInit(): void {
-    this.items = this.user()?printMenu(mainMenu, this.user()!.roles):[];
   }
 
 }

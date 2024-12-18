@@ -1,0 +1,29 @@
+<section class="flex flex-col h-full p-1">
+  <div class="flex flex-col flex-1">
+    <p-menubar [model]="items">
+      <ng-template #start>
+        <img src="images/logo-sf.png" class="rounded-lg" width="30" alt="SoftSlave" srcset="" />
+      </ng-template>
+      <ng-template #item let-item let-root="root">
+          <a pRipple class="flex items-center p-menubar-item-link">
+          @if(item.route){
+            <a [routerLink]="item.route">{{ item.label }}</a>
+          } @else{
+            <span>{{ item.label }}</span>
+          }
+            <i *ngIf="item.items" [ngClass]="['ml-auto pi', root ? 'pi-angle-down' : 'pi-angle-right']"></i>
+          </a>
+      </ng-template>
+      <ng-template #end>
+          <button class="flex items-center gap-2" (click)="subMenu()">
+            <p-avatar shape="circle">{{ this.user()?this.user()!.name.charAt(0):'' | uppercase }}</p-avatar>
+          </button>
+          <p-menu #submenu [model]="userMenu" class="absolute right-0 mt-2 shadow-lg hidden"></p-menu>
+      </ng-template>
+    </p-menubar>
+
+    <div class="flex flex-col flex-1 p-2">
+      <router-outlet />
+    </div>
+  </div>
+</section>

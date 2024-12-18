@@ -9,8 +9,8 @@ import { ButtonModule } from 'primeng/button';
 import { Toast } from 'primeng/toast';
 import { PasswordModule } from 'primeng/password';
 
-import { AuthService } from '../../services/auth.service';
-import { ValidatorsService } from '../../services/validators.service';
+import { AuthService } from '../services/auth.service';
+import { ValidatorsService } from '../services/validators.service';
 import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
