@@ -13,18 +13,16 @@ import { mainMenu } from '../config';
 import { printMenu } from '../utils';
 
 @Component({
-  selector: 'home-page',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterOutlet,
-    RouterLink,
-
-    Avatar,
-    Menubar,
-    Menu,
-  ],
-  templateUrl: './homePage.component.html',
+    selector: 'home-page',
+    imports: [
+        CommonModule,
+        RouterOutlet,
+        RouterLink,
+        Avatar,
+        Menubar,
+        Menu,
+    ],
+    templateUrl: './homePage.component.html'
 })
 export default class HomePageComponent {
 

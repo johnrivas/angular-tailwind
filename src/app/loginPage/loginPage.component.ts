@@ -14,19 +14,17 @@ import { ValidatorsService } from '../services/validators.service';
 import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
-  selector: 'login-page',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-
-    ButtonModule,
-    InputTextModule,
-    Toast,
-    PasswordModule,
-  ],
-  providers: [MessageService],
-  templateUrl: './loginPage.component.html',
+    selector: 'login-page',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        ButtonModule,
+        InputTextModule,
+        Toast,
+        PasswordModule,
+    ],
+    providers: [MessageService],
+    templateUrl: './loginPage.component.html'
 })
 export default class LoginPageComponent implements OnDestroy {
   private authService = inject(AuthService);
