@@ -5,12 +5,9 @@
         <img src="images/logo-sf.png" class="rounded-lg" width="30" alt="SoftSlave" srcset="" />
       </ng-template>
       <ng-template #item let-item let-root="root">
-          <a pRipple class="flex items-center p-menubar-item-link">
-          @if(item.route){
-            <a [routerLink]="item.route">{{ item.label }}</a>
-          } @else{
-            <span>{{ item.label }}</span>
-          }
+          <a pRipple class="flex items-center p-menubar-item-link" [routerLink]="item.route" >
+            <i class="pi" [ngClass]="item.icon"></i>
+            <span class="p-menubar-item-text">{{item.label}}</span>
             <i *ngIf="item.items" [ngClass]="['ml-auto pi', root ? 'pi-angle-down' : 'pi-angle-right']"></i>
           </a>
       </ng-template>

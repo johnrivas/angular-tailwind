@@ -4,15 +4,17 @@ export const mainMenu = [
   {
     permission: [ValidRoles.user],
     label: 'Dashboard',
+    route: '/home',
   },
   {
     permission: [ValidRoles.admin],
     label: 'Configuration',
+    icon: 'pi pi-fw pi-cog',
     items: [
       {
         permission : [ValidRoles.admin],
         label: 'Users',
-        icon: 'pi pi-fw pi-plus',
+        icon: 'pi pi-fw pi-user',
         items: [
           {
             permission : [ValidRoles.admin],
