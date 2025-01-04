@@ -3,13 +3,14 @@ import { computed, inject, Injectable, signal } from '@angular/core';
 import { catchError, Observable, of, switchMap, tap, throwError } from 'rxjs';
 
 import { User } from '../interfaces/user.interface';
+import { environment } from '../../environments/environments';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private url = 'http://localhost:3000/api/';
+  private url = environment.api;
   private user = signal<User|null>(null);
 
   private http = inject(HttpClient);
