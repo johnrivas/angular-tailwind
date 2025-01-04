@@ -45,4 +45,9 @@ export class AuthService {
     this.user.set(null);
   }
 
+  getUsers() : Observable<User[]>
+  {
+    return this.http.get<User[]>(`${this.url}auth/users`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } });
+  }
+
 }

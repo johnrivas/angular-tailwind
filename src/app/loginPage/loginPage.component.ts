@@ -57,7 +57,7 @@ export default class LoginPageComponent implements OnDestroy {
     const sb = this.authService.login(email, password)
       .subscribe({
         next: () => this.router.navigate(['']),
-        error: (err) => this.messageService.add({severity:'error', summary:'Error', detail: err}),
+        error: (err) => this.messageService.add({severity:'error', summary:'Error', detail: `Connection Error`}),
       });
 
     this.subscribes.push(sb);

@@ -1,1 +1,42 @@
-<p>usersPage works!</p>
+
+@if(this.isLoading()){
+  <div class="w-full h-full flex justify-center items-center">
+    <p-progressSpinner styleClass="w-12 h-12" fill="transparent" strokeWidth="8" animationDuration=".5s" [style]="{ width: '50px', height: '50px' }"/>
+  </div>
+}
+@else{
+  <p-card header="Users" styleClass="w-full h-full">
+    @if (this.users()!.length === 0)
+    {
+      <p-message severity="warn" variant="outlined" text="No user found" />
+    }
+    @else {
+      <p-table
+        #dt1
+        [value]="this.users()!"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [lazy]="true"
+        [paginator]="true"
+        [rows]="10"
+        dataKey="user_id"
+        selectionMode="single"
+        (onLazyLoad)="loadUsersLazy($event)"
+      >
+        <ng-template #header>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>E-mail</th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-user>
+            <tr>
+                <td>{{ user.user_id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+        </ng-template>
+      </p-table>
+    }
+  </p-card>
+}
