@@ -5,8 +5,9 @@ import { LazyLoadEvent } from 'primeng/api';
 import { Card } from 'primeng/card';
 import { Message } from 'primeng/message';
 import { TableModule } from 'primeng/table';
-import { ProgressSpinner } from 'primeng/progressspinner';
 
+
+import { LoadingProgressComponent } from '../../../shared/components/loadingProgress/loadingProgress.component';
 import { User } from '../../../interfaces/user.interface';
 import { AuthService } from '../../../services/auth.service';
 
@@ -14,11 +15,11 @@ import { AuthService } from '../../../services/auth.service';
     selector: 'app-users-page',
     imports: [
       CommonModule,
-
       Card,
       Message,
       TableModule,
-      ProgressSpinner,
+
+      LoadingProgressComponent,
     ],
     templateUrl: './usersPage.component.html',
 })
