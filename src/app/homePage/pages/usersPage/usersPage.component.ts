@@ -22,6 +22,17 @@ import { AuthService } from '../../../services/auth.service';
       LoadingProgressComponent,
     ],
     templateUrl: './usersPage.component.html',
+    styles: [`
+        .p-column-title {
+          display: none;
+        }
+
+        @media (max-width: 960px) {
+          .p-column-title {
+            display: block;
+          }
+        }
+    `]
 })
 export default class UsersPageComponent implements OnInit {
   users = signal<User[] | null>(null);

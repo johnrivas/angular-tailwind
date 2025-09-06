@@ -1,4 +1,7 @@
-# SsappCashFlow
+<div style="display: flex; align-items: center;" align="left">
+  <img src="public/images/logo-scudo.png" width="50" alt="SoftSlave by John Rivas" style="margin-right: 10px;" />
+  <h1 style="margin: 0;">Angular with TailwindCSS</h1>
+</div>
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
 

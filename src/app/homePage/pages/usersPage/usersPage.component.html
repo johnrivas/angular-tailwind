@@ -12,26 +12,28 @@
       <p-table
         #dt1
         [value]="this.users()!"
-        [tableStyle]="{ 'min-width': '50rem' }"
+        responsiveLayout="stack"
+        [breakpoint]="'960px'"
         [lazy]="true"
         [paginator]="true"
         [rows]="10"
+        [rowsPerPageOptions]="[5, 10, 20]"
         dataKey="user_id"
         selectionMode="single"
         (onLazyLoad)="loadUsersLazy($event)"
       >
-        <ng-template #header>
+        <ng-template pTemplate="header" let-columns>
             <tr>
                 <th>Code</th>
                 <th>Name</th>
                 <th>E-mail</th>
             </tr>
         </ng-template>
-        <ng-template #body let-user>
+        <ng-template pTemplate="body" let-columns="columns" let-user>
             <tr>
-                <td>{{ user.user_id }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.email }}</td>
+                <td><span class="p-column-title">Code</span>{{ user.user_id }}</td>
+                <td><span class="p-column-title">Name</span>{{ user.name }}</td>
+                <td><span class="p-column-title">E-mail</span>{{ user.email }}</td>
             </tr>
         </ng-template>
       </p-table>
