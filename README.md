@@ -1,7 +1,9 @@
-<div style="display: flex; align-items: center;" align="left">
-  <img src="public/images/logo-scudo.png" width="50" alt="SoftSlave by John Rivas" style="margin-right: 10px;" />
-  <h1 style="margin: 0;">Angular with TailwindCSS</h1>
-</div>
+<p align="center">
+  <img src="public/images/logo-scudo.png" width="120" alt="SoftSlave by John Rivas" style="margin-right: 10px;" />
+  <img src="https://angular.io/assets/images/logos/angular/angular.svg" width="120" alt="Angular logo">
+</p>
+
+# Angular with TailwindCSS
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
 
@@ -32,3 +34,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Stay in touch
 
 - Author - [John Rivas](https://www.linkedin.com/in/john-rivas-arteaga/)
+
+
+**Trademark Notice & Attribution:**  
+Angular® and the Angular logo are trademarks of Google LLC. Used under the CC BY 4.0 license.  
+See the [Angular Press Kit](https://angular.dev/press-kit) for logo downloads and usage guidelines.
