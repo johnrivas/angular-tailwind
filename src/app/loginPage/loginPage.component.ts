@@ -37,8 +37,8 @@ export default class LoginPageComponent implements OnDestroy {
   private validatorService = inject(ValidatorsService);
 
   public loginForm : FormGroup = this.fb.group({
-    email: ['rivas.john@softslave.com', [Validators.required, Validators.pattern(this.validatorService.emailPattern)]],
-    password: ['Milita123', [Validators.required]],
+    email: ['', [Validators.required, Validators.pattern(this.validatorService.emailPattern)]],
+    password: ['', [Validators.required]],
   });
 
   isValidField(field: string)
